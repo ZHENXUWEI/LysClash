@@ -271,7 +271,7 @@ pub fn run() -> std::process::ExitCode {
 
             #[cfg(target_os = "macos")]
             if let Some(window) = _app_handle.get_webview_window("main") {
-                let _ = window.set_title("Clash Verge");
+                let _ = window.set_title("LysClash");
             }
         }
 
@@ -362,6 +362,7 @@ pub fn run() -> std::process::ExitCode {
 
     #[cfg(not(feature = "clippy"))]
     let app = builder.build(tauri::generate_context!()).unwrap_or_else(|e| {
+        eprintln!("[clash-verge] build error: {e:#}");
         logging!(error, Type::Setup, "Failed to build Tauri application: {}", e);
         std::process::exit(1);
     });
